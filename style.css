@@ -1,0 +1,54 @@
+/* Theme Name: CRT Screen */
+@import url('https://fonts.googleapis.com/css2?family=Workbench&display=swap');
+
+/* Reset CSS */
+body{
+  background-color: #222;
+  font-family: "Workbench", sans-serif;
+}
+
+/* CRT Screen */
+.crt-screen{
+  width: 500px;
+  height: 500px;
+  background: repeating-linear-gradient(to bottom, transparent, transparent 5px, #00200033 5px ,#00200033 10px),
+              radial-gradient(#002000, #000A00);
+  color: greenyellow;
+  font-weight: bold;
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem auto;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* CRT Scan */
+.crt-screen::after{
+  content: "";
+  background: linear-gradient(to bottom, transparent, transparent 80%, #11221166 calc(100% - 1px), #11331166 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -100%;
+  animation: 3s linear 1s infinite;
+  animation-name: scan-line;
+  mix-blend-mode: color-burn;
+  z-index: 2;
+  left: 0;
+}
+
+.crt-screen p{
+  margin: 0.5rem;
+}
+
+/* CRT Scan Animation */
+@keyframes scan-line{
+  from{
+    top: -100%;
+  }
+
+  to{
+    top: 100%;
+  }
+}
