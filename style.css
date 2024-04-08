@@ -1,6 +1,17 @@
 /* Theme Name: CRT Screen */
 @import url('https://fonts.googleapis.com/css2?family=Workbench&display=swap');
 
+:root{
+  --crt__width: 500px;
+  --crt__height: 500px;
+  --crt-light__color-first: #002000;
+  --crt-light__color-second: #000A00; 
+  --crt-linear__color: #00200033;
+  --crt-linear__height: 5px;
+  --crt-scan__color: #11221166;
+  --crt-text__color: greenyellow;
+}
+
 /* Reset CSS */
 body{
   background-color: #222;
@@ -9,24 +20,23 @@ body{
 
 /* CRT Screen */
 .crt-screen{
-  width: 500px;
-  height: 500px;
-  background: repeating-linear-gradient(to bottom, transparent, transparent 5px, #00200033 5px ,#00200033 10px),
-              radial-gradient(#002000, #000A00);
-  color: greenyellow;
+  width: var(--crt__width);
+  height: var(--crt__height);
+  background: repeating-linear-gradient(to bottom, transparent, transparent var(--crt-linear__height), var(--crt-linear__color) var(--crt-linear__height) , var(--crt-linear__color) calc(var(--crt-linear__height) * 2)),
+              radial-gradient(var(--crt-light__color-first), var(--crt-light__color-second));
+  color: var(--crt-text__color);
   font-weight: bold;
   padding: 0.5rem;
   position: relative;
   overflow: hidden;
   margin: 1rem auto;
-  flex-direction: column;
   z-index: 1;
 }
 
 /* CRT Scan */
 .crt-screen::after{
   content: "";
-  background: linear-gradient(to bottom, transparent, transparent 80%, #11221166 calc(100% - 1px), #11331166 100%);
+  background: linear-gradient(to bottom, transparent, transparent 80%, var(--crt-scan__color) 100%);
   width: 100%;
   height: 100%;
   position: absolute;
